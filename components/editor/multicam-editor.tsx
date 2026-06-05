@@ -50,7 +50,6 @@ import {
   mediaAssets
 } from "@/lib/editor-data";
 import type { CameraAngle, CutPoint, Marker, MediaAsset, TimelineClip, ToolMode } from "@/lib/editor-types";
-import { publicPath } from "@/lib/site-path";
 import styles from "./multicam-editor.module.css";
 
 const TRACKS: TimelineClip["track"][] = ["V2", "V1", "A1", "A2"];
@@ -896,7 +895,7 @@ function TopBar({
     <header className={styles.topBar}>
       <div className={styles.brandBlock}>
         <div className={styles.brandMark}>
-          <img src={publicPath("/someple/assets/someple-logo-gradient.svg")} alt="" />
+          <img src="/someple/assets/someple-logo-gradient.svg" alt="" />
         </div>
         <div>
           <strong>Someple Multicam NLE</strong>

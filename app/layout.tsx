@@ -1,13 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const pretendard = localFont({
-  src: "../public/someple/fonts/PretendardVariable.ttf",
-  variable: "--font-pretendard",
-  weight: "100 900",
-  display: "swap"
-});
 
 export const metadata: Metadata = {
   title: "Multicam NLE",
@@ -27,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={pretendard.variable}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
