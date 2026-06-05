@@ -1,0 +1,1160 @@
+.editor {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: var(--workspace-header-height) minmax(0, 1fr);
+  background: #111;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.topBar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(30, 30, 30, 0.9);
+  padding: 0 8px;
+  backdrop-filter: blur(20px);
+}
+
+.brandBlock {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.brandMark {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-card);
+  color: var(--brand-primary);
+}
+
+.brandMark img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.brandBlock strong,
+.brandBlock span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brandBlock strong {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.brandBlock span {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.projectStats,
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.projectStats {
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.projectStats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 26px;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-card);
+  padding: 0 6px;
+  white-space: nowrap;
+}
+
+.topActions {
+  justify-content: flex-end;
+}
+
+.iconButton,
+.primaryButton,
+.transport button,
+.toolbar button,
+.toggleButton,
+.trimActions button,
+.exportBox button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  transition:
+    border-color 140ms ease,
+    background 140ms ease,
+    transform 140ms ease;
+}
+
+.iconButton {
+  width: 34px;
+}
+
+.primaryButton {
+  gap: 6px;
+  padding: 0 10px;
+  border-color: rgba(145, 85, 230, 0.55);
+  background: var(--brand-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.iconButton:hover,
+.transport button:hover,
+.toolbar button:hover,
+.toggleButton:hover,
+.trimActions button:hover,
+.exportBox button:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  background: var(--bg-hover);
+}
+
+.primaryButton:hover {
+  background: rgba(145, 85, 230, 0.86);
+}
+
+.workspace {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: 264px minmax(0, 1fr) 288px;
+  gap: 3px;
+  background: #111;
+}
+
+.leftPanel,
+.rightPanel,
+.mainStage {
+  min-width: 0;
+  min-height: 0;
+  background: var(--bg-panel);
+  box-shadow: inset 0 0 0 1px var(--border), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.leftPanel,
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: auto;
+  padding: 8px;
+}
+
+.mainStage {
+  display: grid;
+  grid-template-rows: minmax(260px, 44vh) 44px 44px minmax(240px, 1fr);
+  overflow: hidden;
+}
+
+.panelSection {
+  display: grid;
+  gap: 8px;
+}
+
+.panelSection h2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.assetList,
+.sourceStack,
+.inspectorStack,
+.markerList,
+.exportBox {
+  display: grid;
+  gap: 8px;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mediaActions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.mediaActions .commandButton {
+  width: 100%;
+  min-width: 0;
+  padding: 0 6px;
+}
+
+.assetItem {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 6px;
+  text-align: left;
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.assetSelected {
+  border-color: rgba(145, 85, 230, 0.55);
+  background: rgba(145, 85, 230, 0.1);
+  box-shadow: inset 0 -2px 0 var(--brand-primary), 0 4px 10px rgba(0, 0, 0, 0.24);
+  transform: translateY(-2px);
+}
+
+.assetItem:hover {
+  border-color: var(--border-light);
+  background: var(--bg-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.24);
+}
+
+.assetIcon {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-panel);
+  color: var(--brand-primary);
+}
+
+.assetText {
+  min-width: 0;
+}
+
+.assetText span,
+.assetText small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.assetText span {
+  font-size: 11px;
+}
+
+.assetText small,
+.sourceButton small,
+.markerItem small {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.assetBadge {
+  border-radius: 999px;
+  background: rgba(145, 85, 230, 0.18);
+  color: #d8c4ff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  white-space: nowrap;
+}
+
+.sourceButton {
+  display: grid;
+  position: relative;
+  gap: 2px;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--angle);
+  border-radius: 0;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 8px;
+  text-align: left;
+}
+
+.sourceButton span {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.activeSource {
+  border-left-color: var(--brand-primary);
+  background: rgba(145, 85, 230, 0.12);
+  box-shadow:
+    inset 0 -2px 0 var(--brand-primary),
+    inset 0 0 0 1px rgba(145, 85, 230, 0.78);
+}
+
+.monitorGrid {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: minmax(320px, 1.24fr) minmax(300px, 0.76fr);
+  gap: 3px;
+  background: #111;
+}
+
+.programMonitor,
+.sourceMonitor {
+  display: grid;
+  min-height: 0;
+  grid-template-rows: 30px minmax(0, 1fr) 28px;
+  background: var(--bg-panel);
+  box-shadow: inset 0 0 0 1px var(--border);
+  contain: layout paint;
+}
+
+.sourceMonitor {
+  grid-template-rows: 30px minmax(0, 1fr);
+}
+
+.monitorHeader,
+.monitorFooter,
+.timelineHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 10px;
+  padding: 0 8px;
+}
+
+.monitorHeader span,
+.monitorFooter span {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.monitorFooter {
+  border-top: 1px solid var(--border);
+  border-bottom: 0;
+}
+
+.programFrame {
+  position: relative;
+  display: grid;
+  min-height: 0;
+  place-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--angle) 26%, #181818), #111 62%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 14px);
+}
+
+.programVideo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  object-fit: contain;
+}
+
+.programFrame::before {
+  position: absolute;
+  z-index: 0;
+  inset: 10% 7%;
+  border-radius: 0;
+  background:
+    linear-gradient(120deg, transparent 0 28%, rgba(255, 255, 255, 0.1) 28% 32%, transparent 32%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.36));
+  content: "";
+  filter: saturate(1.1);
+}
+
+.frameOverlay {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  text-align: center;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.64);
+}
+
+.frameOverlay strong {
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: 0;
+}
+
+.frameOverlay small {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.frameOverlayCompact {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  justify-items: start;
+  max-width: min(560px, calc(100% - 16px));
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.38);
+  padding: 8px;
+  text-align: left;
+}
+
+.frameOverlayCompact strong {
+  overflow: hidden;
+  max-width: 100%;
+  font-size: 0.95rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.frameOverlayCompact small {
+  display: none;
+}
+
+.recState {
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.38);
+  color: var(--text-primary);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 7px;
+}
+
+.safeArea {
+  position: absolute;
+  z-index: 4;
+  inset: 7%;
+  border: 1px dashed rgba(250, 250, 250, 0.28);
+  pointer-events: none;
+}
+
+.angleGrid {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+  grid-auto-rows: auto;
+  align-content: start;
+  gap: 3px;
+  overflow: auto;
+  background: #111;
+}
+
+.angleTile {
+  position: relative;
+  display: grid;
+  align-content: flex-end;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  min-width: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--angle) 34%, #181818), #111 72%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 18px);
+  color: var(--text-primary);
+  padding: 8px;
+  text-align: left;
+}
+
+.angleTile::before {
+  position: absolute;
+  z-index: 1;
+  inset: 14px;
+  background:
+    linear-gradient(115deg, transparent 0 40%, rgba(255, 255, 255, 0.12) 40% 44%, transparent 44%),
+    radial-gradient(circle at 28% 20%, color-mix(in srgb, var(--angle-soft) 30%, transparent), transparent 10rem);
+  content: "";
+  opacity: 0.84;
+}
+
+.angleTileHasVideo {
+  background: #000;
+}
+
+.angleTileHasVideo::before {
+  inset: 0;
+  background:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0.22) 52%, rgba(0, 0, 0, 0.42) 100%),
+    linear-gradient(135deg, color-mix(in srgb, var(--angle) 22%, transparent), transparent 58%);
+  opacity: 1;
+}
+
+.angleVideo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  object-fit: cover;
+}
+
+.angleTile strong,
+.angleTile small,
+.angleTile em,
+.angleKey {
+  position: relative;
+  z-index: 2;
+}
+
+.angleTile strong {
+  font-size: 12px;
+}
+
+.angleTile small {
+  overflow: hidden;
+  color: var(--text-secondary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.angleTile em {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.36);
+  color: var(--text-primary);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 800;
+  padding: 3px 6px;
+}
+
+.angleKey {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.38);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.angleTileActive {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: -3px;
+  box-shadow: inset 0 -2px 0 var(--brand-primary);
+}
+
+.angleTileActive::after {
+  position: absolute;
+  inset: 4px;
+  z-index: 4;
+  border: 2px solid var(--brand-primary);
+  box-shadow:
+    inset 0 0 0 1px rgba(250, 250, 250, 0.44),
+    0 0 0 1px rgba(0, 0, 0, 0.72);
+  content: "";
+  pointer-events: none;
+}
+
+.transport,
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-panel);
+  padding: 4px 8px;
+}
+
+.transport {
+  justify-content: center;
+}
+
+.transport button,
+.toolbar button {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+}
+
+.transport .playButton {
+  width: 36px;
+  border-color: rgba(145, 85, 230, 0.55);
+  background: var(--brand-primary);
+  color: #fff;
+}
+
+.transport output {
+  min-width: 78px;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  text-align: left;
+}
+
+.frameStep {
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.toolbar {
+  justify-content: flex-start;
+}
+
+.segmented {
+  display: inline-flex;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+.segmented button {
+  border: 0;
+  border-radius: 0;
+  background: var(--bg-card);
+}
+
+.segmented .activeTool {
+  background: rgba(145, 85, 230, 0.18);
+  color: #fff;
+  box-shadow: inset 0 -2px 0 var(--brand-primary);
+}
+
+.commandButton,
+.toggleButton {
+  gap: 6px;
+  width: auto;
+  min-width: 72px;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+
+.commandButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.toggleButton {
+  position: relative;
+  flex: 0 0 auto;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.toggleButton input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggleButton:has(input:checked) {
+  border-color: rgba(145, 85, 230, 0.55);
+  background: rgba(145, 85, 230, 0.14);
+  color: #fff;
+  box-shadow: inset 0 -2px 0 var(--brand-primary);
+}
+
+.zoomControls {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.zoomControls input {
+  width: 120px;
+  accent-color: var(--brand-primary);
+}
+
+.timelinePanel {
+  display: grid;
+  min-height: 0;
+  grid-template-rows: 30px minmax(0, 1fr);
+  background: var(--bg-panel);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.timelineHeader {
+  border-bottom: 1px solid var(--border);
+}
+
+.timelineHeader span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.timelineScroll {
+  min-height: 0;
+  overflow: auto;
+}
+
+.timelineCanvas {
+  position: relative;
+  min-width: 100%;
+  min-height: 100%;
+  padding-top: 26px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 9.375% 100%,
+    #181818;
+  contain: layout paint;
+  cursor: col-resize;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.timelineCanvas * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ruler {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 48px;
+  height: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ruler span {
+  position: absolute;
+  top: 6px;
+  transform: translateX(-50%);
+  color: var(--text-muted);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.markerLayer {
+  position: absolute;
+  top: 26px;
+  right: 0;
+  left: 48px;
+  height: 100%;
+  pointer-events: none;
+}
+
+.markerPin {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: calc(100% - 10px);
+  background: var(--marker);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--marker) 36%, transparent);
+}
+
+.markerPin::before {
+  position: absolute;
+  top: -2px;
+  left: -5px;
+  width: 12px;
+  height: 12px;
+  clip-path: polygon(50% 0, 100% 42%, 50% 100%, 0 42%);
+  background: var(--marker);
+  content: "";
+}
+
+.cutTrack,
+.timelineLane {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  min-height: 36px;
+}
+
+.cutTrack {
+  height: 34px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 3px;
+}
+
+.cutTrack::before {
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  content: "CUT";
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.cutSegment {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--angle) 60%, var(--border));
+  border-radius: 0;
+  background: color-mix(in srgb, var(--angle) 20%, var(--bg-card));
+  color: var(--text-primary);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 20px;
+  padding: 0 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.timelineLane {
+  height: 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.trackLabel {
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--border);
+  background: var(--bg-panel);
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 900;
+  pointer-events: none;
+}
+
+.trackBody {
+  position: relative;
+  min-width: 0;
+}
+
+.clip {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  display: grid;
+  min-width: 28px;
+  align-content: center;
+  gap: 2px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--clip) 56%, var(--border));
+  border-radius: 0;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--clip) 22%, #232323), rgba(255, 255, 255, 0.03)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 16px);
+  color: var(--text-primary);
+  padding: 4px 6px;
+  text-align: left;
+  cursor: col-resize;
+  -webkit-user-drag: none;
+}
+
+.clip span,
+.clip small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.clip span {
+  min-width: 0;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.clip small {
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.selectedClip {
+  box-shadow:
+    0 0 0 1px #fff inset,
+    inset 0 -2px 0 var(--brand-primary),
+    0 4px 10px rgba(0, 0, 0, 0.24);
+  transform: translateY(-2px);
+}
+
+.audioClip {
+  align-content: flex-end;
+}
+
+.waveform {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+  left: 6px;
+  display: flex;
+  height: 18px;
+  align-items: flex-end;
+  gap: 2px;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.waveform i {
+  flex: 1 1 auto;
+  min-width: 2px;
+  border-radius: 0;
+  background: rgba(250, 250, 250, 0.78);
+}
+
+.playheadLayer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 48px;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--brand-primary);
+  box-shadow: none;
+  transform: translateX(-1px);
+}
+
+.playhead::before {
+  position: absolute;
+  top: 0;
+  left: -7px;
+  width: 16px;
+  height: 16px;
+  border-radius: 0;
+  background: var(--brand-primary);
+  content: "";
+}
+
+.kicker {
+  display: block;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.inspectorStack h2 {
+  margin: 3px 0 0;
+  font-size: 13px;
+}
+
+.inspectorStack p {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0;
+}
+
+.metaGrid div {
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-card);
+  padding: 6px;
+}
+
+.metaGrid dt {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.metaGrid dd {
+  margin: 3px 0 0;
+  overflow: hidden;
+  color: var(--text-primary);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trimActions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.trimActions button {
+  width: 100%;
+}
+
+.markerItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 36px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--marker);
+  border-radius: 0;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.markerItem span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.exportBox {
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-card);
+  padding: 10px;
+}
+
+.exportBox strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+}
+
+.progressTrack {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #333;
+}
+
+.progressTrack span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--gradient-primary);
+  transition: width 240ms ease;
+}
+
+.exportBox button {
+  width: 100%;
+}
+
+.emptyText {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+@media (max-width: 1180px) {
+  .workspace {
+    grid-template-columns: 230px minmax(0, 1fr);
+  }
+
+  .rightPanel {
+    display: none;
+  }
+
+  .topBar {
+    grid-template-columns: minmax(180px, 1fr) auto;
+  }
+
+  .projectStats {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .editor {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .topBar {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    padding: 12px;
+  }
+
+  .topActions {
+    justify-content: flex-start;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .leftPanel {
+    display: none;
+  }
+
+  .mainStage {
+    grid-template-rows: minmax(420px, auto) auto auto minmax(300px, 1fr);
+    overflow: visible;
+  }
+
+  .monitorGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .programMonitor {
+    min-height: 250px;
+  }
+
+  .sourceMonitor {
+    min-height: 300px;
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+  }
+
+  .zoomControls {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .zoomControls input {
+    width: min(52vw, 260px);
+  }
+}
